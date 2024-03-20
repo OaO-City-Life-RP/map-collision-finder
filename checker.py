@@ -49,7 +49,7 @@ def find_collisions(directory, ignored_files=None, output_file=None):
     ## If the output file is recovered as None then create one as output_timestamp.txt
     if output_file == None:
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        output_file = "output_ " + timestamp + ".txt"
+        output_file = "possible_collisions_output_ " + timestamp + ".txt"
         with open(output_file, 'w') as f:
             for filename, paths in file_dict.items():
                 if len(paths) > 1:
