@@ -6,21 +6,28 @@ A tool designed to assist map developers and server owners with finding map coll
 
 - Python 3.x
 
-### Installation
+### Installation (if use source code)
    ```bash
    git clone https://github.com/puttydotexe/fivem-map-collision-finder.git
    ```
 
-### Usage
+### Usage (if use source code)
    ```bash
-   python checker.py <directory> [--ignore PATTERN [PATTERN ...]] [--output OUTPUT_FILE]
+   python checker.py <directory> [--ignore PATTERN [PATTERN ...]]
    ```
 
-### Example Usage
+### Example Usage (if use source code)
    ```bash
-   python checker.py /resources/[maps] --ignore *.ydd output.log
+   python checker.py /resources/[maps] --ignore *.ydd
    ```
-   > If an output file isn't provided, it will simply output the possible collisions in the command line.
+
+### (If use release .exe file then)
+   ```bash
+   checker.exe <directory> [--ignore PATTERN [PATTERN ...]]
+   ```
+```bash
+   checker.py /resources/[maps] --ignore *.ydd
+   ```
 
 ### License
 
