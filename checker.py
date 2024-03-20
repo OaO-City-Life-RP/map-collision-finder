@@ -44,9 +44,6 @@ def find_collisions(directory, ignored_files=None, output_file=None):
             
             file_key = filename.lower()
             file_dict[file_key].append(file_path)
-    ##Create print to see if the output file is recovered
-    print(output_file)
-    ## If the output file is recovered as None then create one as output_timestamp.txt
     if output_file == None:
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         output_file = "possible_collisions_output_ " + timestamp + ".txt"
@@ -70,3 +67,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     find_collisions(args.directory, ignored_files=args.ignore, output_file=args.output)
+    print("Done!")
