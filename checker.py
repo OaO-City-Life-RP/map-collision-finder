@@ -20,7 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-
+import datetime
 import os
 import argparse
 from collections import defaultdict
@@ -44,8 +44,12 @@ def find_collisions(directory, ignored_files=None, output_file=None):
             
             file_key = filename.lower()
             file_dict[file_key].append(file_path)
-
-    if output_file:
+    ##Create print to see if the output file is recovered
+    print(output_file)
+    ## If the output file is recovered as None then create one as output_timestamp.txt
+    if output_file == None:
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        output_file = "output_ " + timestamp + ".txt"
         with open(output_file, 'w') as f:
             for filename, paths in file_dict.items():
                 if len(paths) > 1:
@@ -57,17 +61,6 @@ def find_collisions(directory, ignored_files=None, output_file=None):
 
             f.write(f"Total collisions found: {collisions}\n")
 
-        print(f"All collisions written to '{output_file}'.")
-    else:
-        for filename, paths in file_dict.items():
-            if len(paths) > 1:
-                print(f'Possible collisions: {filename}')
-                for path in paths:
-                    print(f'   - {path}')
-                print()
-                collisions += 1
-
-        print(f"Total collisions found: {collisions}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Find map collisions in a directory.")
